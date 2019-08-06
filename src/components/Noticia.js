@@ -5,13 +5,18 @@ const Noticia = ({noticia}) => {
     // Extraer los datos
     const {urlToImage, url, title, description, source} = noticia;
 
+    //Condicionalmente cargar imagen si está disponible
+    const imagen = (urlToImage) ? 
+        <div className="card-image">
+            <img src={urlToImage} alt={title}/>
+            <span className="card-title">{source.name}</span>
+        </div>
+    : null;
+
     return(
         <div className="col s12 m5 l4">
             <div className="card">
-                <div className="card-image">
-                    <img src={urlToImage} alt={title}/>
-                </div>
-
+                {imagen}
                 <div className="card-content">
                     <h3>{title}</h3>
                     <p>{description}</p>
